@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WatchMovieTo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>WatchMovieTo</h1>
+    <span id="status">Bağlanıyor...</span>
+  </header>
+
+  <div class="url-bar">
+    <select id="movieSelect"><option value="">Film seç...</option></select>
+    <button id="movieBtn">Aç</button>
+  </div>
+
+  <div class="url-bar">
+    <input id="videoUrl" placeholder="Film linkini yapıştır (.mp4)" />
+    <button id="loadBtn">Yükle</button>
+  </div>
+
+  <video id="player" controls></video>
+
+    <div class="cams">
+    <video id="remoteVideo" autoplay playsinline></video>
+    <video id="localVideo" autoplay playsinline muted></video>
+  </div>
+
+  <div class="controls">
+    <button id="camBtn">Kamerayı kapat</button>
+    <button id="micBtn">Mikrofonu kapat</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

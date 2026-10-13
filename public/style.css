@@ -1,0 +1,12 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #111; color: #eee; font-family: system-ui, sans-serif; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
+h1 { margin: 0; font-size: 20px; }
+.url-bar { display: flex; gap: 8px; padding: 0 20px 12px; }
+.url-bar input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1c1c1c; color: #eee; }
+button { padding: 10px 16px; border: 0; border-radius: 6px; background: #e50914; color: #fff; cursor: pointer; }
+video { width: 100%; max-height: 75vh; background: #000; }
+.cams { position: fixed; right: 16px; bottom: 70px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
+.cams video { width: 200px; height: auto; max-height: none; border-radius: 8px; border: 1px solid #333; background: #000; }
+.controls { display: flex; gap: 8px; padding: 12px 20px; }
+.url-bar select { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1c1c1c; color: #eee; }
