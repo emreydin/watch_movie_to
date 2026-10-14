@@ -7,31 +7,37 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>WatchMovieTo</h1>
-    <span id="status">Bağlanıyor...</span>
-  </header>
+  <div class="app">
+    <main class="stage" id="stage">
+      <div class="stage-top">
+        <span class="logo">WatchMovieTo</span>
+        <span id="status">Bağlanıyor...</span>
+        <select id="movieSelect" class="movie-select">
+          <option value="">Film seç...</option>
+        </select>
+      </div>
+      <video id="player" controls playsinline></video>
+      <div class="empty">Başlamak için bir film seç</div>
+    </main>
 
-  <div class="url-bar">
-    <select id="movieSelect"><option value="">Film seç...</option></select>
-    <button id="movieBtn">Aç</button>
-  </div>
+    <aside class="side">
+      <div class="tile" id="remoteTile">
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div class="tile-label">Arkadaşın</div>
+        <div class="badges" id="remoteBadges"></div>
+        <div class="placeholder"></div>
+      </div>
 
-  <div class="url-bar">
-    <input id="videoUrl" placeholder="Film linkini yapıştır (.mp4)" />
-    <button id="loadBtn">Yükle</button>
-  </div>
-
-  <video id="player" controls></video>
-
-    <div class="cams">
-    <video id="remoteVideo" autoplay playsinline></video>
-    <video id="localVideo" autoplay playsinline muted></video>
-  </div>
-
-  <div class="controls">
-    <button id="camBtn">Kamerayı kapat</button>
-    <button id="micBtn">Mikrofonu kapat</button>
+      <div class="tile" id="localTile">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <div class="tile-label">Sen</div>
+        <div class="placeholder"></div>
+        <div class="tile-controls">
+          <button id="camBtn" class="round" title="Kamerayı aç/kapat">📷</button>
+          <button id="micBtn" class="round" title="Mikrofonu aç/kapat">🎤</button>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>

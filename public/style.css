@@ -1,12 +1,47 @@
 * { box-sizing: border-box; }
-body { margin: 0; background: #111; color: #eee; font-family: system-ui, sans-serif; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
-h1 { margin: 0; font-size: 20px; }
-.url-bar { display: flex; gap: 8px; padding: 0 20px 12px; }
-.url-bar input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1c1c1c; color: #eee; }
-button { padding: 10px 16px; border: 0; border-radius: 6px; background: #e50914; color: #fff; cursor: pointer; }
-video { width: 100%; max-height: 75vh; background: #000; }
-.cams { position: fixed; right: 16px; bottom: 70px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
-.cams video { width: 200px; height: auto; max-height: none; border-radius: 8px; border: 1px solid #333; background: #000; }
-.controls { display: flex; gap: 8px; padding: 12px 20px; }
-.url-bar select { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1c1c1c; color: #eee; }
+html, body { height: 100%; margin: 0; overflow: hidden; }
+body { background: #0b0b0b; color: #eee; font-family: system-ui, sans-serif; }
+
+.app { display: flex; height: 100vh; height: 100dvh; }
+
+/* ---- Sol: film alanı (%75) ---- */
+.stage { flex: 3; min-width: 0; display: flex; flex-direction: column; background: #000; position: relative; }
+.stage-top { display: flex; align-items: center; gap: 12px; padding: 8px 14px; background: #111; border-bottom: 1px solid #222; }
+.logo { font-weight: 700; white-space: nowrap; }
+#status { flex: 1; min-width: 0; font-size: 13px; color: #aaa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#fileName { font-size: 13px; color: #888; max-width: 30%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pick-btn { background: #e50914; color: #fff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 14px; white-space: nowrap; }
+.pick-btn:hover { background: #f6121d; }
+
+#player { flex: 1 1 0; min-height: 0; width: 100%; background: #000; object-fit: contain; }
+
+.empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666; font-size: 18px; pointer-events: none; }
+.stage.has-video .empty { display: none; }
+
+/* ---- Sağ: kameralar (%25) ---- */
+.side { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 8px; padding: 8px; background: #111; }
+.tile { position: relative; flex: 1; min-height: 0; background: #1a1a1a; border-radius: 10px; overflow: hidden; }
+.tile video { width: 100%; height: 100%; object-fit: cover; background: #000; }
+#localVideo { transform: scaleX(-1); }
+
+.tile-label { position: absolute; left: 8px; top: 8px; font-size: 12px; background: rgba(0, 0, 0, .55); padding: 2px 8px; border-radius: 10px; }
+.badges { position: absolute; right: 8px; top: 8px; display: flex; gap: 6px; }
+.badge { background: #e5484d; border-radius: 10px; padding: 2px 8px; font-size: 12px; }
+
+.placeholder { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: #1a1a1a; color: #888; font-size: 14px; pointer-events: none; }
+.tile.show-placeholder .placeholder { display: flex; }
+
+.tile-controls { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 10px; }
+.round { width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .2); color: #fff; font-size: 18px; cursor: pointer; backdrop-filter: blur(4px); }
+.round:hover { background: rgba(255, 255, 255, .3); }
+.round.off { background: #e5484d; }
+.round:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---- Dar ekran / telefon ---- */
+@media (max-width: 800px) {
+  .app { flex-direction: column; }
+  .side { flex: 1; flex-direction: row; min-width: 0; }
+  #fileName { display: none; }
+}
+
+.movie-select { min-width: 200px; max-width: 45%; padding: 8px 10px; border-radius: 6px; border: 1px solid #333; background: #1c1c1c; color: #eee; font-size: 14px; }
